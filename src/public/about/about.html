@@ -1,0 +1,18 @@
+<div class="container text-center">
+  <h2>{{ aboutCtrl.message }}</h2>
+  <div ng-if="aboutCtrl.userInfo">
+    <p>First Name: {{ aboutCtrl.userInfo.firstName }}</p>
+    <p>Last Name: {{ aboutCtrl.userInfo.lastName }}</p>
+    <p>Email: {{ aboutCtrl.userInfo.email }}</p>
+    <p>Phone: {{ aboutCtrl.userInfo.phone }}</p>
+    <p>Favorite Menu Item: {{ aboutCtrl.userInfo.favoriteItem }}</p>
+    <div class="category-tile">
+      <img width="200" height="200"
+           ng-src="images/menu/{{ aboutCtrl.getItemParts(aboutCtrl.userInfo.favoriteItem).stringPart }}/{{ aboutCtrl.userInfo.favoriteItem }}.jpg">
+      <span>{{$ctrl.category.name}}</span>
+    </div>
+  </div>
+  <div ng-if="!aboutCtrl.userInfo">
+    <a ui-sref="public.signup" class="btn btn-primary">Sign Up Now!</a>
+  </div>
+</div>

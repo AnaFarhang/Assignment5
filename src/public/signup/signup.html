@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="public">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body ng-controller="SignUpController as signupCtrl">
+
+  <div class="container">
+    <h2 id="menu-categories-title" class="text-center">Please enter your information!</h2>
+    <div class="text-center">
+      <form name="signupCtrl.userForm" novalidate>
+
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" ng-model="signupCtrl.user.firstName" required style="color: black;">
+        <br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" ng-model="signupCtrl.user.lastName" required style="color: black;">
+        <br><br>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" ng-model="signupCtrl.user.email" required style="color: black;">
+        <br><br>
+
+        <label for="phone">Phone Number (should be 10 digits):</label>
+        <input type="tel" id="phone" ng-model="signupCtrl.user.phone" required pattern="^\d{10}$" style="color: black;">
+        <br><br>
+
+        <label for="favoriteItem">Favorite Menu Item (e.g., L1, DS1):</label>
+        <input type="text" id="favoriteItem" ng-model="signupCtrl.user.favoriteItem" required style="color: black;">
+        <br><br>
+
+        <button type="button" ng-click="signupCtrl.submitForm()" style="color: black;">Submit</button>
+        <br><br>
+
+        <div ng-show="signupCtrl.userForm.$submitted && signupCtrl.userForm.$invalid" style="color: red; font-weight: bold;">
+          Form is invalid! Please correct the errors.
+        </div>
+
+        <div ng-show="signupCtrl.userForm.$submitted && signupCtrl.userForm.$valid" style="color: green; font-weight: bold;">
+          Form is valid! Thank you for submitting.
+        </div>
+
+        <!-- Display the result message -->
+        <div style="color: yellow; font-weight: bold; margin-top: 20px;">
+          {{ signupCtrl.resultMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code goes here
+  </script>
+
+</body>
+</html>
